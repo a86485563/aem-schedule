@@ -1,14 +1,4 @@
-package com.fetnet.portal.aem.cbu.internal.schedulers.osgi;
 
-import org.osgi.service.metatype.annotations.AttributeDefinition;
-import org.osgi.service.metatype.annotations.AttributeType;
-import org.osgi.service.metatype.annotations.ObjectClassDefinition;
-
-/**
- * @author Anirudh Sharma
- * <p>
- * This is the configuration class that takes properties for a scheduler to run
- */
 @ObjectClassDefinition(name = "Sync SuperApp Config to publisher", description = "Config sync scheduler")
 public @interface SuperAppConfigSyncConfiguration {
 
