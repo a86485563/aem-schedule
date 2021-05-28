@@ -8,6 +8,7 @@
 
 # 1.OSGi configuration :
 ref : https://aem.redquark.org/2018/10/day-12-creating-your-custom-osgi.html
+
 主要幾個annotation:
 @ObjectClassDefinition(name="string",description="string")
 name: webconsole 上所要顯示的名字 description : 簡介
