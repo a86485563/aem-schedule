@@ -10,26 +10,36 @@
 ref : https://aem.redquark.org/2018/10/day-12-creating-your-custom-osgi.html
 
 主要幾個annotation:
+
 @ObjectClassDefinition(name="string",description="string")
 name: webconsole 上所要顯示的名字 description : 簡介
 
 @AttributeDefinition( name = "Scheduler name", description = "Name of the scheduler", type = AttributeType.STRING)
 public String schedulerName() default "SuperApp Config Scheduler Configuration";
+
 其實就是osgi 內要給人填的入的選項。
 
 How to use osgi parameter?
-@Designate(ocd = SuperAppConfigSyncConfiguration.class) 使用這個annotation 告訴程式說，我要從這邊取得osgi para。
+@Designate(ocd = SuperAppConfigSyncConfiguration.class)
+
+使用這個annotation 告訴程式說，我要從這邊取得osgi para。
 
 # 2.Scheduler: 
 How scheduler work?
-aem scheduler package org.apache.sling.commons.scheduler.Scheduler
 
-目標就是這句 schedule(Object job, ScheduleOptions options)
+使用 aem scheduler package org.apache.sling.commons.scheduler.Scheduler
+
+目標就是這句: schedule(Object job, ScheduleOptions options)
+
 完成 ScheduleOptions:
 ScheduleOptions 從 schedule.exp(執行時間)
+
 ScheduleOptions sopts = scheduler.EXPR(config.cronExpression());
+
 sopts.name(String.valueOf(schedulerID));
+
 sopts.canRunConcurrently(false);
+
 
 其他都是在做蒐集資料的部分。
 其他annotation 用於osgi的執行:
