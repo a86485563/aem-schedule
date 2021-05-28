@@ -52,7 +52,7 @@ sopts.canRunConcurrently(false);
 
 天真的我以為osgi歸osgi，寫完第一part編譯完預期看到osgi寫在webconsole上，很抱歉並沒有。搭配@Designate(ocd = xxxConfiguration.class) 才會出現。
 
-cronExpression "10 * * * * ?";"秒 分 時 天 月" 意思是: 任何天任何時任合分的10s執行。
+cronExpression "10 * * * ? *";"秒 分 時 天 月(可以填'?') 星期" 意思是: 任何天任何時任合分的10s執行。
 
 ---------------ref-----------------------
 
