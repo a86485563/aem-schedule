@@ -5,28 +5,21 @@ public class SuperAppConfigSyncScheduler implements Runnable {
     @Reference
     private Scheduler scheduler;
 
-    @Reference
-    private Replicator replicator;
-
-    @Reference
-    private ResourceResolverFactory resolverFactory;
-
     private int schedulerID;
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    private String replicatePath = "";
-    private final UserReplicateService service = new UserReplicateServiceImpl();
+    private String customParameter = "";
 
     @Activate
     protected void activate(SuperAppConfigSyncConfiguration config) {
         schedulerID = config.schedulerName().hashCode();
-        replicatePath = config.customPathParameter();
+        customParameter = config.customPathParameter();
     }
 
     @Modified
     protected void modified(SuperAppConfigSyncConfiguration config) {
         removeScheduler();
         schedulerID = config.schedulerName().hashCode(); // update schedulerID
-        replicatePath = config.customPathParameter();
+        customParameter = config.customPathParameter();
         addScheduler(config);
     }
 
@@ -60,7 +53,7 @@ public class SuperAppConfigSyncScheduler implements Runnable {
 
     @Override
     public void run() {
-        if (StringUtils.isEmpty(replicatePath)) {
+        if (StringUtils.isEmpty(customParameter)) {
             return;
         }
 
